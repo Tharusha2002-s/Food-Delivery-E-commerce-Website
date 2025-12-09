@@ -1,0 +1,445 @@
+:root {
+  --primary: #06c167;
+  --black: #000000;
+  --gray-bg: #f6f6f6;
+  --border: #e0e0e0;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: #fff;
+  color: var(--black);
+}
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+.hidden {
+  display: none !important;
+}
+.green-text {
+  color: var(--primary);
+}
+
+/* --- 1. NAVIGATION --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.brand-logo {
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0;
+}
+.menu-btn {
+  background: none;
+  font-size: 20px;
+}
+
+.search-container {
+  background: var(--gray-bg);
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 500px;
+}
+.search-container input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.location-box {
+  display: flex;
+  align-items: center;
+  width: 35%;
+}
+.divider {
+  width: 1px;
+  height: 20px;
+  background: #ccc;
+  margin: 0 10px;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.cart-btn {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+.login-btn {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+/* --- 2. HOME PAGE --- */
+#main-container {
+  min-height: 80vh;
+  padding-bottom: 40px;
+}
+.categories-wrapper {
+  display: flex;
+  gap: 15px;
+  padding: 20px 40px;
+  overflow-x: auto;
+}
+.cat-pill {
+  padding: 8px 16px;
+  background: var(--gray-bg);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.cat-pill img {
+  width: 24px;
+}
+.cat-pill.active {
+  background: black;
+  color: white;
+}
+
+.section-heading {
+  padding: 0 40px;
+  margin-top: 20px;
+}
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 40px;
+}
+
+.res-card {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.res-card:hover {
+  transform: scale(1.02);
+}
+.res-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.res-card h3 {
+  margin: 10px 0 5px;
+  font-size: 16px;
+}
+.res-sub {
+  color: #666;
+  font-size: 14px;
+}
+.rating-pill {
+  background: #eee;
+  padding: 4px 8px;
+  border-radius: 50px;
+  font-size: 12px;
+  float: right;
+}
+
+/* --- 3. RESTAURANT PAGE --- */
+.res-banner-container {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+#res-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.back-btn-float {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.res-details-header {
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.res-details-header h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+}
+.res-meta-text {
+  color: #555;
+  font-size: 14px;
+}
+
+.menu-section {
+  padding: 20px 40px;
+}
+.menu-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+.menu-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  height: 140px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.menu-item:hover {
+  border-color: black;
+}
+.menu-text {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* --- 4. CHECKOUT PAGE --- */
+.checkout-container {
+  padding: 20px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.back-link {
+  background: none;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+.checkout-split {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+}
+.order-summary-box {
+  border-top: 1px solid #ccc;
+}
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.payment-box {
+  background: var(--gray-bg);
+  padding: 20px;
+  border-radius: 8px;
+  height: fit-content;
+}
+.place-order-btn {
+  background: var(--primary);
+  color: white;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.cost-breakdown .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #555;
+}
+.cost-breakdown .total {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* --- 5. FOOD MODAL --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.food-modal-content {
+  background: white;
+  width: 500px;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.qty-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #ccc;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 18px;
+}
+.add-order-btn {
+  background: black;
+  color: white;
+  flex: 1;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+#modal-food-info img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* --- 6. FOOTER --- */
+footer {
+  background: black;
+  color: white;
+  padding: 50px 40px;
+  margin-top: auto;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.footer-col h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.footer-col a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.footer-col a:hover {
+  text-decoration: underline;
+}
+.app-store-btns button {
+  background: #333;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-size: 12px;
+}
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #777;
+}
+.socials i {
+  margin-left: 20px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+/* --- 7. TRACKING --- */
+.tracking-center {
+  text-align: center;
+  padding: 50px 0;
+}
+.map-simulation {
+  height: 200px;
+  background: #e0f7fa;
+  margin: 30px auto;
+  width: 80%;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.moving-bike {
+  font-size: 40px;
+  color: var(--primary);
+  animation: bikeDrive 3s infinite linear;
+}
+@keyframes bikeDrive {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
+.status-steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.step {
+  color: #ccc;
+}
+.step.active {
+  color: var(--primary);
+  font-weight: bold;
+}
