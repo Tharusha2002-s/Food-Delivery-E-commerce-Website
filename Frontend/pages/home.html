@@ -11,173 +11,97 @@
     />
   </head>
   <body>
-    <nav>
-      <div class="nav-left">
-        <button class="menu-btn"><i class="fas fa-bars"></i></button>
-        <h1 class="brand-logo" onclick="goHome()">
-          Uber <span class="green-text">Eats</span>
-        </h1>
-      </div>
+    <header>
+      <nav>
+        <div class="nav-left">
+          <h1 class="brand-logo" onclick="goHome()">
+            Dine <span class="text">Edge</span>
+          </h1>
+        </div>
 
-      <div class="nav-middle">
-        <div class="search-container">
-          <div class="location-box">
-            <i class="fas fa-map-marker-alt"></i>
-            <input type="text" value="Colombo 03" class="loc-input" />
+        <div class="nav-middle">
+          <div class="search-container">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search for food, coffee, etc."
+                id="global-search"
+              />
+            </div>
           </div>
-          <div class="divider"></div>
-          <div class="search-box">
-            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="nav-right">
+          <button class="cart-btn" onclick="showCheckoutPage()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-badge">0</span> Cart
+          </button>
+          <button class="Join-btn" onclick="">Join With Us</button>
+          <button class="login-btn" onclick="openAuthModal()">Log in</button>
+        </div>
+      </nav>
+      <img class="header-img" src="../assets/images/home/hone.png" alt="" />
+      <h2 class="section-heading">Restaurants near you</h2>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div id="auth-modal" class="modal-overlay">
+      <div class="auth-modal-content">
+        <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="switchAuthTab('login')">
+            Log In
+          </button>
+          <button class="auth-tab" onclick="switchAuthTab('signup')">
+            Sign Up
+          </button>
+        </div>
+        <div id="login-form" class="auth-form">
+          <h2>Welcome Back</h2>
+          <form onsubmit="handleLogin(event)">
+            <input type="email" placeholder="Email" id="login-email" required />
+            <input
+              type="password"
+              placeholder="Password"
+              id="login-password"
+              required
+            />
+            <button type="submit" class="auth-submit-btn">Log In</button>
+          </form>
+        </div>
+        <div id="signup-form" class="auth-form hidden">
+          <h2>Create Account</h2>
+          <form onsubmit="handleSignup(event)">
             <input
               type="text"
-              placeholder="Search for food, coffee, etc."
-              id="global-search"
+              placeholder="Full Name"
+              id="signup-name"
+              required
             />
-          </div>
+            <input
+              type="email"
+              placeholder="Email"
+              id="signup-email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              id="signup-password"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              id="signup-confirm-password"
+              required
+            />
+            <button type="submit" class="auth-submit-btn">Sign Up</button>
+          </form>
         </div>
       </div>
-
-      <div class="nav-right">
-        <button class="cart-btn" onclick="showCheckoutPage()">
-          <i class="fas fa-shopping-cart"></i>
-          <span id="cart-badge">0</span> Cart
-        </button>
-        <button class="login-btn">Log in</button>
-      </div>
-    </nav>
-
-    <main id="main-container">
-      <section id="home-view">
-        <div class="categories-wrapper">
-          <div class="cat-pill active">
-            <img src="https://img.icons8.com/color/48/rice-bowl.png" /> Sri
-            Lankan
-          </div>
-          <div class="cat-pill">
-            <img src="https://img.icons8.com/color/48/hamburger.png" /> Burger
-          </div>
-          <div class="cat-pill">
-            <img src="https://img.icons8.com/color/48/pizza.png" /> Pizza
-          </div>
-          <div class="cat-pill">
-            <img src="https://img.icons8.com/color/48/fried-chicken.png" />
-            Chicken
-          </div>
-          <div class="cat-pill">
-            <img src="https://img.icons8.com/color/48/coffee.png" /> Coffee
-          </div>
-        </div>
-
-        <h2 class="section-heading">Restaurants near you</h2>
-        <div id="restaurant-grid" class="grid-layout"></div>
-      </section>
-
-      <section id="restaurant-view" class="hidden">
-        <div class="res-banner-container">
-          <img id="res-banner-img" src="" alt="" />
-          <button class="back-btn-float" onclick="goHome()">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-        </div>
-        <div class="res-details-header">
-          <h1 id="res-title">Restaurant Name</h1>
-          <p class="res-meta-text" id="res-meta">
-            Sri Lankan • 20-30 min • LKR 150 Fee
-          </p>
-          <div class="res-rating-box">4.8 <i class="fas fa-star"></i></div>
-        </div>
-
-        <div class="menu-section">
-          <h3>Popular Items</h3>
-          <div id="menu-grid" class="menu-grid-layout"></div>
-        </div>
-      </section>
-
-      <section id="checkout-view" class="hidden">
-        <div class="checkout-container">
-          <button class="back-link" onclick="goHome()">
-            <i class="fas fa-arrow-left"></i> Back to store
-          </button>
-          <h1>Your Order</h1>
-
-          <div class="checkout-split">
-            <div class="order-summary-box">
-              <div id="order-items-list"></div>
-            </div>
-
-            <div class="payment-box">
-              <button class="place-order-btn" onclick="startTracking()">
-                Place Order
-              </button>
-              <div class="cost-breakdown">
-                <div class="row">
-                  <span>Subtotal</span> <span id="bill-subtotal">LKR 0.00</span>
-                </div>
-                <div class="row">
-                  <span>Delivery Fee</span> <span id="bill-fee">LKR 0.00</span>
-                </div>
-                <hr />
-                <div class="row total">
-                  <span>Total</span> <span id="bill-total">LKR 0.00</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="tracking-view" class="hidden">
-        <div class="tracking-center">
-          <h2>Order on the way!</h2>
-          <div class="map-simulation">
-            <div class="pulse-dot"></div>
-            <i class="fas fa-motorcycle moving-bike"></i>
-          </div>
-          <div class="status-steps">
-            <div class="step active">
-              <i class="fas fa-check"></i> Confirmed
-            </div>
-            <div class="step"><i class="fas fa-fire"></i> Preparing</div>
-            <div class="step"><i class="fas fa-motorcycle"></i> Picked Up</div>
-            <div class="step"><i class="fas fa-home"></i> Delivered</div>
-          </div>
-          <button class="btn-secondary" onclick="goHome()">Order More</button>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-col">
-          <h2>Uber <span class="green-text">Eats</span></h2>
-          <div class="app-store-btns">
-            <button><i class="fab fa-apple"></i> App Store</button>
-            <button><i class="fab fa-google-play"></i> Google Play</button>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>About Uber Eats</h4>
-          <a href="#">About Us</a>
-          <a href="#">Read our blog</a>
-          <a href="#">Buy gift cards</a>
-          <a href="#">Sign up to deliver</a>
-        </div>
-        <div class="footer-col">
-          <h4>Get Help</h4>
-          <a href="#">Get Help</a>
-          <a href="#">Read FAQs</a>
-          <a href="#">View all cities</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Uber Technologies Inc.</p>
-        <div class="socials">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
-        </div>
-      </div>
-    </footer>
+    </div>
 
     <div id="food-modal" class="modal-overlay">
       <div class="food-modal-content">

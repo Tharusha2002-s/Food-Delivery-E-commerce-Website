@@ -42,6 +42,9 @@ nav {
   align-items: center;
   gap: 20px;
 }
+.text {
+  color: #2979ff;
+}
 .brand-logo {
   font-size: 24px;
   cursor: pointer;
@@ -92,6 +95,13 @@ nav {
   border-radius: 30px;
   font-weight: bold;
 }
+.Join-btn {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
 .login-btn {
   background: white;
   padding: 10px 20px;
@@ -99,8 +109,15 @@ nav {
   font-weight: bold;
   border: 1px solid #ddd;
 }
-
+.login-btn:hover {
+  background-color: black;
+  color: white;
+}
 /* --- 2. HOME PAGE --- */
+.header-img {
+  width: 100%;
+  height: 700px;
+}
 #main-container {
   min-height: 80vh;
   padding-bottom: 40px;
@@ -290,7 +307,61 @@ nav {
   margin-top: 10px;
 }
 
-/* --- 5. FOOD MODAL --- */
+/* --- 5. AUTH MODAL --- */
+.auth-modal-content {
+  background: white;
+  width: 400px;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+}
+.auth-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.auth-tab.active {
+  border-bottom-color: var(--primary);
+  color: var(--primary);
+}
+.auth-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.auth-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.auth-submit-btn:hover {
+  background: #05a055;
+}
+
+/* --- 6. FOOD MODAL --- */
 .modal-overlay {
   display: none;
   position: fixed;
